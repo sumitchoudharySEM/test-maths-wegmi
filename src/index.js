@@ -10,14 +10,14 @@ import './polyfills';
 
 import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
-import { mainnet, polygon, optimism, arbitrum, base, zora } from "wagmi/chains";
+import { mainnet, polygon, optimism, arbitrum, base, zora, polygonMumbai } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 //RainbowKit Config
 const config = getDefaultConfig({
   appName: "My RainbowKit App",
   projectId: "7d0e6dd5d018a6b5528a9d2890282e36",
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora, polygonMumbai],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 
