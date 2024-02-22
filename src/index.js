@@ -10,14 +10,14 @@ import './polyfills';
 
 import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
-import { mainnet, polygon, optimism, arbitrum, base, zora, polygonMumbai } from "wagmi/chains";
+import { mainnet, polygon, optimism, arbitrum, base, zora, polygonMumbai, sepolia } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 //RainbowKit Config
 const config = getDefaultConfig({
   appName: "game",
   projectId: 'a214714b02737b2660f367e51c0f7683',
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora, polygonMumbai],
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora, polygonMumbai, sepolia],
   
 });
 

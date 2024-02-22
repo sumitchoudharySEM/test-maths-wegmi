@@ -2,16 +2,19 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import "./App.css";
 import { useAccount, useReadContract, useWriteContract } from "wagmi";
 import { useEffect, useState } from "react";
-import abi from "./contract/abi.json";
+import abio from "./contract/abi.json";
+import abi from "./contract/sepholia.json";
+import { parseEther } from 'viem';
 
 function App() {
   const contractAddress = "0x1705Be686E606FF75Aa4C2F636Cbd8D5f7956b59";
+  const contractAddressSepholia = "0x39393F6E21bb435d550e83fdEB32e9Ce7a90C860";
   const account = useAccount();
   const [value, setValue] = useState();
 
   const { data: useContractReadData } = useReadContract({
     abi,
-    address: "0x1705Be686E606FF75Aa4C2F636Cbd8D5f7956b59",
+    address: "0x39393F6E21bb435d550e83fdEB32e9Ce7a90C860",
     functionName: "getNumber",
     watch: true,
   });
@@ -21,9 +24,10 @@ function App() {
   const setNumber = async () => {
     writeContract({
       abi,
-      address: "0x1705Be686E606FF75Aa4C2F636Cbd8D5f7956b59",
+      address: "0x39393F6E21bb435d550e83fdEB32e9Ce7a90C860",
       functionName: "changeNumber",
       args: [value],
+      value: parseEther('0.0001'),
     });
   };
 
