@@ -1,9 +1,14 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import "./App.css";
-import { useAccount, useReadContract, useWriteContract } from "wagmi";
+import {
+  useAccount,
+  useReadContract,
+  useWriteContract,
+  useWaitForTransactionReceipt,
+} from "wagmi";
 import { useEffect, useState } from "react";
 import abi from "./contract/coinflip/polygon.json";
-import { parseEther } from 'viem';
+import { parseEther } from "viem";
 
 function App() {
   const contractAddress = "0x16a0c09FB0DB20746B93964cf65222aB6a98B3A1";
@@ -18,25 +23,29 @@ function App() {
     watch: true,
   });
 
-  const { writeContract } = useWriteContract();
-
+  const { data: hash, isPending, writeContract } = useWriteContract();
   const startGamee = async () => {
     console.log("start game function run ");
     writeContract({
       abi,
       address: "0x16a0c09FB0DB20746B93964cf65222aB6a98B3A1",
       functionName: "StartGame",
-      args: [parseEther('0.0001'),false],
-      value: parseEther('0.0001'),
+      args: [parseEther("0.0001"), false],
+      value: parseEther("0.0001"),
     });
   };
+
+  const { isLoading: isConfirming, isSuccess: isConfirmed } =
+    useWaitForTransactionReceipt({
+      hash,
+    });
 
   useEffect(() => {
     console.log("__________________________");
     console.log("ReadData", useContractReadData);
     console.log("ReadData", Number(useContractReadData));
     console.log("__________________________");
-  }, [useContractReadData]);
+  }, [useContractReadData, isConfirmed]);
 
   return (
     <div
@@ -51,7 +60,6 @@ function App() {
       <ConnectButton />
       <hr />
       <div>
-        
         <h1>WAGMI</h1>
         <p>Account: {account.address}</p>
         <p>
@@ -73,7 +81,14 @@ function App() {
         /> */}
         <p> value: {value} </p>
         <p> value: {coinSide} </p>
-        <button onClick={() => startGamee()}>Start Game</button>
+        <button disabled={isPending} onClick={() => startGamee()}>
+          {isPending ? "game going on..." : "start game"}
+        </button>
+
+        {hash && <div>Transaction Hash: {hash}</div>}
+        {isConfirming && <div>Waiting for confirmation...</div>}
+        {isConfirmed && <div>Transaction confirmed.</div>}
+
 
       </div>
     </div>
