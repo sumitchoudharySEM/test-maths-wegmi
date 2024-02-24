@@ -1,0 +1,175 @@
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "Games",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "GameId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint8",
+				"name": "GameState",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "StackAmount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address payable",
+				"name": "Player",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "ChosenValue",
+				"type": "bool"
+			},
+			{
+				"internalType": "bool",
+				"name": "RandomOutput",
+				"type": "bool"
+			},
+			{
+				"internalType": "bool",
+				"name": "GameResult",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "Owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "GameIdVal",
+				"type": "uint256"
+			}
+		],
+		"name": "PrintGame",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "GameId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "GameState",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "StackAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address payable",
+						"name": "Player",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "ChosenValue",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "RandomOutput",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "GameResult",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct CoinFlip.Game",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "PrintNextGameNo",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "StackAmountVal",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "ChosenCoinSideVal",
+				"type": "bool"
+			}
+		],
+		"name": "StartGame",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getRandomResult",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
