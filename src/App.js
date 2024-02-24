@@ -9,6 +9,7 @@ function App() {
   const contractAddress = "0x16a0c09FB0DB20746B93964cf65222aB6a98B3A1";
   const account = useAccount();
   const [value, setValue] = useState();
+  const [coinSide, setcoinSide] = useState(true);
 
   const { data: useContractReadData } = useReadContract({
     abi,
@@ -19,12 +20,13 @@ function App() {
 
   const { writeContract } = useWriteContract();
 
-  const setNumber = async () => {
+  const startGamee = async () => {
+    console.log("start game function run ");
     writeContract({
       abi,
-      address: "0x5E4d3C33Cd36E4e42E7Cd961b7C3d2906D2F72ba",
-      functionName: "changeNumber",
-      args: [value],
+      address: "0x16a0c09FB0DB20746B93964cf65222aB6a98B3A1",
+      functionName: "StartGame",
+      args: [parseEther('0.0001'),false],
       value: parseEther('0.0001'),
     });
   };
@@ -59,15 +61,19 @@ function App() {
             : "not fetched yet"}
         </p>
 
-        <input
-          name="value"
-          placeholder="Value"
+        {/* <input
+          placeholder="bet on heads or tails"
+          type="text"
+          onChange={(e) => setcoinSide(e.target.value)}
+        /> */}
+        {/* <input
+          placeholder="ether value"
           type="number"
-          required
           onChange={(e) => setValue(e.target.value)}
-        />
+        /> */}
         <p> value: {value} </p>
-        <button onClick={() => setNumber()}>Change Number</button>
+        <p> value: {coinSide} </p>
+        <button onClick={() => startGamee()}>Start Game</button>
 
       </div>
     </div>
